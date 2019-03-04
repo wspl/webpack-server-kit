@@ -1,13 +1,30 @@
 {
   "name": "@webpack-server-kit/core",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "author": "Plutonist <p@vecsight.com> (http://impl.moe))",
   "main": "lib/index.js",
   "license": "MIT",
+  "keywords": [
+    "webpack",
+    "server",
+    "hot-reload"
+  ],
+  "homepage": "https://github.com/wspl/webpack-server-kit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wspl/webpack-server-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wspl/webpack-server-kit/issues"
+  },
   "scripts": {
-    "test": "mocha --require ts-node/register test/**/*.ts"
+    "test": "mocha --require ts-node/register test/**/*.ts",
+    "build": "rimraf ./lib && tsc",
+    "release": "npm run build && npm publish --tag latest --access public"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/memory-fs": "^0.3.2",
     "@types/mime": "^2.0.1",
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.10.4",
@@ -15,12 +32,12 @@
     "@types/webpack": "^4.4.25",
     "chai": "^4.2.0",
     "mocha": "^6.0.2",
+    "rimraf": "^2.6.3",
     "supertest": "^3.4.2",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
-    "@types/memory-fs": "^0.3.2",
     "memory-fs": "^0.4.1",
     "mime": "^2.4.0"
   }
