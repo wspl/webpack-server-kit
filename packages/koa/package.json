@@ -1,0 +1,36 @@
+{
+  "name": "@webpack-server-kit/koa",
+  "version": "0.0.1",
+  "author": "Plutonist <p@vecsight.com> (http://impl.moe))",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "keywords": [
+    "webpack",
+    "server",
+    "hot-reload",
+    "express",
+    "middleware"
+  ],
+  "homepage": "https://github.com/wspl/webpack-server-kit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wspl/webpack-server-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wspl/webpack-server-kit/issues"
+  },
+  "scripts": {
+    "test": "mocha --require ts-node/register test/**/*.ts",
+    "build": "rimraf ./lib && tsc",
+    "release": "npm run build && npm publish --tag latest --access public"
+  },
+  "dependencies": {
+    "@webpack-server-kit/core": "^0.0.5"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/webpack": "^4.4.25",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.3.3333"
+  }
+}
