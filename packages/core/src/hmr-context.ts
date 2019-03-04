@@ -4,7 +4,7 @@ import { Context, IContextOptions } from './context'
 import { setDefault } from './util'
 import { packageName } from './constants'
 
-interface IHmrContextOptions extends IContextOptions {
+export interface IHmrContextOptions extends IContextOptions {
   path?: string
   heartbeatInterval?: number
 }
@@ -22,7 +22,6 @@ export class HmrContext extends Context<IHmrContextOptions> {
   constructor (public compiler: webpack.Compiler, public options: IHmrContextOptions = {}) {
     super()
 
-    setDefault(options, 'pathPrefix', '')
     setDefault(options, 'path', '/__webpack_hmr')
     setDefault(options, 'heartbeatInterval', 10000)
 

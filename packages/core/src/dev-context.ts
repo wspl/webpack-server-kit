@@ -5,7 +5,7 @@ import { Context, IContextOptions } from './context'
 import { setDefault } from './util'
 import { packageName } from './constants'
 
-interface IDevContextOptions extends IContextOptions {
+export interface IDevContextOptions extends IContextOptions {
   defaultPage?: string
 }
 
@@ -22,7 +22,6 @@ export class DevContext extends Context<IDevContextOptions> {
     super()
 
     setDefault(options, 'defaultPage', 'index.html')
-    setDefault(options, 'pathPrefix', '')
 
     compiler.outputFileSystem = this.fs
     this.startWebpack()
