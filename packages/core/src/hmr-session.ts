@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events'
-import { HmrContext } from './HmrContext'
-import { ISessionParameters, Session } from './Session'
+import { HmrContext } from './hmr-context'
+import { ISessionParameters, Session } from './session'
 
 export interface IHmrSessionParameters extends ISessionParameters {
   isHttp1?: boolean

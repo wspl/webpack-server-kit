@@ -1,5 +1,5 @@
 import { PassThrough } from 'stream'
-import { Context, IContextOptions } from './Context'
+import { Context, IContextOptions } from './context'
 import http from "http"
 import * as path from 'path'
 

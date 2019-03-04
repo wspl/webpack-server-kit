@@ -1,8 +1,8 @@
 import * as webpack from 'webpack'
-import { HmrSession, HmrSessionId, IHmrSessionParameters } from './HmrSession'
-import { Context, IContextOptions } from './Context'
-import { setDefault } from './Util'
-import { packageName } from './Constants'
+import { HmrSession, HmrSessionId, IHmrSessionParameters } from './hmr-session'
+import { Context, IContextOptions } from './context'
+import { setDefault } from './util'
+import { packageName } from './constants'
 
 interface IHmrContextOptions extends IContextOptions {
   path?: string

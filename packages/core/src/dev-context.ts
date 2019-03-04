@@ -1,9 +1,9 @@
 import * as webpack from 'webpack'
 import MemoryFileSystem = require('memory-fs')
-import { DevSession, IDevSessionParameters } from './DevSession'
-import { Context, IContextOptions } from './Context'
-import { setDefault } from './Util'
-import { packageName } from './Constants'
+import { DevSession, IDevSessionParameters } from './dev-session'
+import { Context, IContextOptions } from './context'
+import { setDefault } from './util'
+import { packageName } from './constants'
 
 interface IDevContextOptions extends IContextOptions {
   defaultPage?: string

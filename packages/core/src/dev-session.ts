@@ -1,9 +1,9 @@
-import { DevContext } from './DevContext'
+import { DevContext } from './dev-context'
 import { PassThrough } from 'stream'
 import { promisify } from 'util'
 import * as path from 'path'
 import * as mime from 'mime'
-import { ISessionParameters, Session } from './Session'
+import { ISessionParameters, Session } from './session'
 
 export interface IDevSessionParameters extends ISessionParameters {}
 
