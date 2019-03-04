@@ -1,6 +1,6 @@
 {
   "name": "@webpack-server-kit/core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Plutonist <p@vecsight.com> (http://impl.moe))",
   "main": "lib/index.js",
   "license": "MIT",
