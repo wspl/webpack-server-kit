@@ -8,7 +8,7 @@
     "webpack",
     "server",
     "hot-reload",
-    "express",
+    "koa",
     "middleware"
   ],
   "homepage": "https://github.com/wspl/webpack-server-kit",
