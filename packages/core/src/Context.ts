@@ -1,5 +1,3 @@
-import * as webpack from 'webpack'
-
 export interface IContextOptions {
   pathPrefix?: string
 }

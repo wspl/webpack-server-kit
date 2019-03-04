@@ -2,8 +2,7 @@ import * as webpack from 'webpack'
 import { HmrSession, HmrSessionId, IHmrSessionParameters } from './HmrSession'
 import { Context, IContextOptions } from './Context'
 import { setDefault } from './Util'
-
-const namespace = '@webpack-server-kit/middleware'
+import { packageName } from './Constants'
 
 interface IHmrContextOptions extends IContextOptions {
   path?: string
@@ -20,9 +19,7 @@ export class HmrContext extends Context<IHmrContextOptions> {
   private heartbeatTimer: NodeJS.Timeout = null
   private latestStats: webpack.Stats = null
 
-  constructor (
-    public compiler: webpack.Compiler,
-    public options: IHmrContextOptions = {}) {
+  constructor (public compiler: webpack.Compiler, public options: IHmrContextOptions = {}) {
     super()
 
     setDefault(options, 'pathPrefix', '')
@@ -66,14 +63,14 @@ export class HmrContext extends Context<IHmrContextOptions> {
   }
 
   private attachCompiler () {
-    this.compiler.hooks.invalid.tap(namespace, () => {
+    this.compiler.hooks.invalid.tap(packageName, () => {
       if (this.closed) return
       this.latestStats = null
 
       // this.options.log('webpack building...')
       this.publish('building')
     })
-    this.compiler.hooks.done.tap(namespace, stats => {
+    this.compiler.hooks.done.tap(packageName, stats => {
       if (this.closed) return
       this.latestStats = stats
       this.publish('built', stats)

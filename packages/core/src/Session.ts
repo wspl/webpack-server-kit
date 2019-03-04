@@ -8,8 +8,7 @@ export interface ISession {
   on(event: 'headers', listener: (headers: { [key: string]: string }, statusCode: number) => void): this
 
   test(): Promise<boolean>
-  run(): Promise<boolean>
-  close ()
+  run(): Promise<void>
 }
 
 export interface ISessionParameters {
@@ -23,8 +22,7 @@ export interface ISessionParameters {
 export abstract class Session<T extends Context<IContextOptions>> extends PassThrough implements ISession {
   public abstract params: ISessionParameters
   public abstract context: T
-  abstract close ()
-  abstract run (): Promise<boolean>
+  abstract run (): Promise<void>
   abstract test (): Promise<boolean>
 
   get pathPrefix (): string {

@@ -1,4 +1,3 @@
-import * as http from 'http'
 import { DevContext } from './DevContext'
 import { PassThrough } from 'stream'
 import { promisify } from 'util'
@@ -9,12 +8,18 @@ import { ISessionParameters, Session } from './Session'
 export interface IDevSessionParameters extends ISessionParameters {}
 
 export class DevSession extends Session<DevContext> {
+  public isClosed = false
+
   private filePath: string
 
   constructor (public context: DevContext, public params: IDevSessionParameters = {}) {
     super()
 
     this.filePath = path.join(this.context.outputPath, this.relativePath)
+
+    this.on('close', () => {
+      this.isClosed = true
+    })
   }
 
   async test () {
@@ -29,20 +34,19 @@ export class DevSession extends Session<DevContext> {
   }
 
   async run () {
-    console.log(this.filePath)
-    const contentSize = this.context.fs.readFileSync(this.filePath).length
-    const contentType = mime.getType(this.filePath)
+    this.context.locked(() => {
+      if (this.isClosed) return
 
-    this.emit('headers', {
-      'Content-Type': contentType,
-      'Content-Size': contentSize
-    }, 200)
+      const contentSize = this.context.fs.readFileSync(this.filePath).length
+      const contentType = mime.getType(this.filePath)
 
-    const readStream = this.context.fs.createReadStream(this.filePath)
-    readStream.pipe(this)
-    return true
-  }
+      this.emit('headers', {
+        'Content-Type': contentType,
+        'Content-Size': contentSize
+      }, 200)
 
-  close () {
+      const readStream = this.context.fs.createReadStream(this.filePath)
+      readStream.pipe(this)
+    })
   }
 }

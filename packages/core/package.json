@@ -1,5 +1,5 @@
 {
-  "name": "@webpack-server-kit/middleware",
+  "name": "@webpack-server-kit/core",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",

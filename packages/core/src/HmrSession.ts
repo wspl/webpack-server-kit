@@ -1,8 +1,6 @@
-import http from 'http'
 import { EventEmitter } from 'events'
 import { HmrContext } from './HmrContext'
-import { ISession, ISessionParameters, Session } from './Session'
-import * as path from "path"
+import { ISessionParameters, Session } from './Session'
 
 export interface IHmrSessionParameters extends ISessionParameters {
   isHttp1?: boolean
@@ -34,7 +32,6 @@ export class HmrSession extends Session<HmrContext> {
   }
 
   async test () {
-    console.log(this.relativePath, this.context.options.path)
     return this.relativePath === this.context.options.path
   }
 
@@ -56,8 +53,6 @@ export class HmrSession extends Session<HmrContext> {
 
     this.write('\n')
     this.context.sync()
-
-    return true
   }
 
   close () {
