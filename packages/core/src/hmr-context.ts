@@ -24,7 +24,7 @@ export class HmrContext extends Context<IHmrContextOptions> {
 
     setDefault(options, 'pathPrefix', '')
     setDefault(options, 'path', '/__webpack_hmr')
-    setDefault(options, 'heartbeatInterval', 1000)
+    setDefault(options, 'heartbeatInterval', 10000)
 
     this.startHeartbeat()
     this.attachCompiler()
