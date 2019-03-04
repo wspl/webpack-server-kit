@@ -13,8 +13,8 @@ export interface ISession {
 
 export interface ISessionParameters {
   request?: http.IncomingMessage
+  pathPrefix?: string
 
-  isHttp1?: boolean
   path?: string
   relativePath?: string
 }
@@ -26,7 +26,7 @@ export abstract class Session<T extends Context<IContextOptions>> extends PassTh
   abstract test (): Promise<boolean>
 
   get pathPrefix (): string {
-    return this.context.options.pathPrefix
+    return this.params.pathPrefix || this.context.options.pathPrefix || ''
   }
 
   get path (): string {
