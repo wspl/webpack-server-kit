@@ -3,7 +3,9 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/middleware/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/express/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/koa/lib" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
