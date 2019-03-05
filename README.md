@@ -14,11 +14,11 @@ If you plan to use it directly on Koa and Express, please refer to:
 - [Koa](packages/koa)
 
 ## Usage
-We will shows how to integrate this library with other web servers.
+We will show you how to integrate this library with other web servers.
 
 Here we use Node's native http module as an example.
 
-First, install the core library.
+First, install the core library:
 
 ```bash
 npm install @webpack-server-kit/core

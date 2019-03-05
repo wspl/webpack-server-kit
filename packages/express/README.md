@@ -20,10 +20,13 @@ Integration with Express:
 import Express from 'express'
 import { WebpackDevMiddleware } from '@webpack-server-kit/express'
 
+// Need a webpack compiler instance can be passed to middleware.
+const compiler = {/* webpack.Compiler */}
+
 const app = Express()
 
 // Use middleware
-app.use(WebpackDevMiddleware())
+app.use(WebpackDevMiddleware(compiler))
 
 // Other logic, such as server-side rendering
 app.use((req, res) => {
@@ -38,9 +41,12 @@ Or if you want to serve project in a subdirectory with express router:
 import Express from 'express'
 import { WebpackDevMiddleware } from '@webpack-server-kit/express'
 
+// Need a webpack compiler instance can be passed to middleware.
+const compiler = {/* webpack.Compiler */}
+
 const app = Express()
 
-app.get('/sub/*', WebpackDevMiddleware(), (req, res) => {
+app.get('/sub/*', WebpackDevMiddleware(compiler), (req, res) => {
   // Other logic, such as server-side rendering
   // ...
 })

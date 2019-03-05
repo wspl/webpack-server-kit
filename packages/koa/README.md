@@ -20,10 +20,13 @@ Integration with Koa:
 import Koa from 'koa'
 import { WebpackDevMiddleware } from '@webpack-server-kit/koa'
 
+// Need a webpack compiler instance can be passed to middleware.
+const compiler = {/* webpack.Compiler */}
+
 const app = new Koa()
 
 // Use middleware
-app.use(WebpackDevMiddleware())
+app.use(WebpackDevMiddleware(compiler))
 
 // Other logic, such as server-side rendering
 app.use(async ctx => {
@@ -39,13 +42,16 @@ import Koa from 'koa'
 import KoaRouter from 'koa-router'
 import { WebpackDevMiddleware } from '@webpack-server-kit/koa'
 
+// Need a webpack compiler instance can be passed to middleware.
+const compiler = {/* webpack.Compiler */}
+
 const app = new Koa()
 const router = new KoaRouter()
 
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-router.get('/sub/*', WebpackDevMiddleware(), async ctx => {
+router.get('/sub/*', WebpackDevMiddleware(compiler), async ctx => {
   // Other logic, such as server-side rendering
   // ...
 })
